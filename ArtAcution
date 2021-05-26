@@ -1,0 +1,64 @@
+
+pragma solidity 0.8.2;
+contract  Auction
+ {
+ string bankName = "Art Acution";             
+    bool   isAvaliable;                                    
+    uint   contractArt;                             
+    uint   auctionAmount;                            
+    uint8  priceAcution = 2;
+    
+    struct User{
+        uint8 id;
+        address userAddress;
+        string name;
+        string art;
+    }
+    User[] public users;
+    
+    address public owner;
+    
+    constructor () {
+        owner = msg.sender;
+    }
+    
+    
+    
+    function registerUser(uint8 id, address _accountAddress, string memory _name, string memory _art) public {
+        User memory user = User(id, _accountAddress, _name, _art);
+        users.push(user);
+    }
+    
+    function functionArray() public pure returns(uint[5] memory) {
+        uint[5] memory array;
+        
+        array[1] = 210;
+        array[2] = 30;
+        
+        return array;
+    }
+    
+    function getUser(uint index) public view returns(User memory) {
+        return users[index];
+    }
+    function usersCount() public view returns(uint){
+        return users.length;
+    }
+    
+    function remove(uint index) public {
+        delete users[index];
+    }
+    
+    function setprice (address payable _receiver) public payable {
+        uint AcutionAmount = ((msg.value*100)*uint256(priceAcution))/10000;
+        uint transferableAmount = msg.value - priceAcution;
+        contractArt += priceAcutiont;
+        amountTransacted += transferableAmount;
+        _receiver.transfer(transferableAmount);
+    }
+    function showArt(string memory _art ) public view returns (user memory)
+    {
+        returns users.name;
+    }
+    }
+    
